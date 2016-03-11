@@ -102,8 +102,22 @@ module.exports = httpClient.extend({
       method: 'GET',
       path: '{UserId}/bankaccounts',
       params: { 'UserId': { required: true } }
-    })
+    }),
 
+ // WA 17.9.2015
+
+     user: httpMethod({
+       method: 'GET',
+       path: 'natural/{Id}',
+//       path: 'users/{Id}',	// doesn't work
+       params: { 'Id': { required: true } }
+     }),
+
+     users: httpMethod({
+       method: 'GET',
+       path: '../users',
+       params: { }
+     })
   }
 
 })

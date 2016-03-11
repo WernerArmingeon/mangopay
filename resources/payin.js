@@ -92,8 +92,42 @@ module.exports = httpClient.extend({
       params: {
           'Id': { required: true }
       }
-    })    
+    }),
     
+    directDebit: httpMethod({
+       method: 'POST',
+       path: '/directdebit/web',
+       params: {
+           'Tag':                { required: false }
+         , 'AuthorId':           { required: true }
+         , 'DebitedFunds':       { required: true }
+         , 'Fees':               { required: true, "default": { Currency: 'EUR', Amount: 0 } }
+         , 'CreditedWalletId':   { required: true }
+         , 'ReturnURL':          { required: true }
+         , 'TemplateURLOptions': { required: false }
+         , 'Culture':            { required: true }
+         , 'DirectDebitType':    { required: true }
+         , 'CreditedUserId':     { required: false }
+       }
+    }),
+
+    cardWeb: httpMethod({
+       method: 'POST',
+       path: '/card/web',
+       params: {
+           'Tag':                { required: false }
+         , 'AuthorId':           { required: true }
+         , 'DebitedFunds':       { required: true }
+         , 'Fees':               { required: true, "default": { Currency: 'EUR', Amount: 0 } }
+         , 'CreditedWalletId':   { required: true }
+         , 'ReturnURL':          { required: true }
+         , 'TemplateURLOptions': { required: false }
+         , 'Culture':            { required: true }
+         , 'CardType':           { required: true }
+         , 'SecureMode':         { required: false }
+         , 'CreditedUserId':     { required: false }
+       }
+    })    
   }
 
 })
